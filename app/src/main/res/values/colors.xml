@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="primary">#130160</color>
+    <color name="aws">#FF9228</color>
+    <color name="error">#E94D8A</color>
+    <color name="tp1">#D6CDFE</color>
+    <color name="tp2">#FFD6AD</color>
+    <color name="tp3">#50E94D8A</color>
+    <color name="azure">#AFECFE</color>
+    <color name="purple">#BEAFFE</color>
+</resources>
