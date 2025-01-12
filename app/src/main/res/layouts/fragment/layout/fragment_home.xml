@@ -1,15 +1,259 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.fragment.HomeFragment">
+    android:layout_height="match_parent">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <include android:id="@+id/headerContainer" layout="@layout/header_component" />
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="Home" />
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/headerContainer"
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
 
-</FrameLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <LinearLayout
+                android:id="@+id/search_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingHorizontal="18dp"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="UselessParent">
+
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/searchText"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/ic_radius"
+                    android:backgroundTint="@color/white"
+                    android:drawableStart="@drawable/searchx24"
+                    android:drawablePadding="10dp"
+                    android:drawableTint="@android:color/darker_gray"
+                    android:fontFamily="@font/poppins_regular"
+                    android:hint="@string/search_here"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:paddingStart="13dp"
+                    android:paddingTop="2dp"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="14sp"
+                    tools:ignore="RtlSymmetry,TouchTargetSizeCheck" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/buttonFilter"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    app:icon="@drawable/filter"
+                    android:background="@drawable/ic_radius"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    app:iconGravity="textStart"
+                    app:iconPadding="0dp"
+                    app:iconSize="24dp"
+                    android:contentDescription="Button Fillter"
+                    tools:ignore="HardcodedText" />
+
+            </LinearLayout>
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/carouselPromotion"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="24dp"
+                android:paddingHorizontal="18dp"
+                app:layout_constraintTop_toBottomOf="@id/search_bar"
+                />
+
+            <RelativeLayout
+                android:id="@+id/layoutHeaderOfFindJobSection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="18dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="18dp"
+                app:layout_constraintTop_toBottomOf="@id/carouselPromotion"
+                >
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/find_your_job"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textSize="18sp"
+                    android:layout_alignParentStart="true"
+                    />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:paddingHorizontal="18dp"
+                android:orientation="horizontal"
+                tools:ignore="DisableBaselineAlignment"
+                app:layout_constraintTop_toBottomOf="@id/layoutHeaderOfFindJobSection">
+
+                <!-- Left Item -->
+                <LinearLayout
+                    android:id="@+id/remoteLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="200dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/ic_radius"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:backgroundTint="@color/azure"
+                    android:padding="16dp"
+                    android:layout_marginEnd="8dp"
+                    >
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="44.5k"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        tools:ignore="HardcodedText" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Remote Job"
+                        android:textSize="16sp"
+                        android:textColor="@color/white"
+                        tools:ignore="HardcodedText" />
+                </LinearLayout>
+
+            <!-- Right Container for Two Items -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="200dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    >
+
+                    <!-- First Right Item -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/ic_radius"
+                        android:backgroundTint="@color/secondary"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:padding="16dp"
+                        android:layout_marginBottom="8dp"
+                        >
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="66.8k"
+                            android:textSize="24sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/white" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Full Time"
+                            android:textSize="16sp"
+                            android:textColor="@color/white" />
+                    </LinearLayout>
+
+                    <!-- Second Right Item -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/ic_radius"
+                        android:backgroundTint="@color/aws"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:padding="16dp">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="38.9k"
+                            android:textSize="24sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/white" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Part Time"
+                            android:textSize="16sp"
+                            android:textColor="@color/white" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/layoutHeaderOfRecentJobSection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="18dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="18dp"
+                app:layout_constraintTop_toBottomOf="@id/layoutMenu"
+                >
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/recent_jobs"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textSize="18sp"
+                    android:layout_alignParentStart="true"
+                    />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/buttonSeeAll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentTop="true"
+                    android:text="@string/see_all"
+                    app:backgroundTint="@android:color/transparent"
+                    android:textColor="@color/primary"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textSize="14sp"
+                    android:paddingTop="4dp"
+                    android:layout_alignParentStart="true"
+                    android:gravity="end"
+                     />
+
+            </RelativeLayout>
+
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerRecentJob"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="18dp"
+                        android:nestedScrollingEnabled="false"
+                    app:layout_constraintTop_toBottomOf="@id/layoutHeaderOfRecentJobSection"
+                    />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

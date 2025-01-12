@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.screen.CareerDetailActivity">
+
+    <LinearLayout
+        android:id="@+id/header_details"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="48dp"
+            android:paddingHorizontal="18dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonBack"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="Button Back"
+                app:icon="@drawable/ic_back"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:iconSize="24dp"
+                app:iconTint="@color/primary"
+                tools:ignore="HardcodedText,RedundantDescriptionCheck" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonOption"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                app:icon="@drawable/options"
+                android:layout_alignParentEnd="true"
+                android:background="@android:color/transparent"
+                app:iconTint="@color/primary"
+                app:iconSize="24dp"
+                app:iconPadding="0dp"
+                app:iconGravity="textEnd"
+                android:contentDescription="Option Buttom"
+                tools:ignore="HardcodedText" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingHorizontal="18dp">
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="76dp"
+                android:layout_height="76dp"
+                app:shapeAppearanceOverlay="@style/Circular74"
+                app:srcCompat="@drawable/logo"
+                />
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="UX/UI Designer"
+                android:paddingTop="12dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:textSize="20sp"
+                tools:ignore="HardcodedText" />
+
+            <LinearLayout
+                android:id="@+id/company_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/company_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Google inc"
+                    android:textColor="@android:color/darker_gray"
+                    tools:ignore="HardcodedText,TextContrastCheck" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="10dp"
+                    android:text="@string/dot"
+                    android:textColor="@android:color/darker_gray"
+                    tools:ignore="TextContrastCheck" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/company_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="California, US"
+                    android:textColor="@android:color/darker_gray"
+                    tools:ignore="HardcodedText,TextContrastCheck" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="12dp">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="38dp"
+                    android:background="@drawable/ic_round"
+                    android:text="Full time"
+                    android:lines="1"
+                    android:paddingTop="4dp"
+                    android:paddingHorizontal="12dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:backgroundTint="#F2F2F2"
+                    android:textAlignment="center"
+                    android:fontFamily="@font/poppins_regular"
+                    android:layout_marginEnd="12dp"
+                    tools:ignore="HardcodedText" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="38dp"
+                    android:background="@drawable/ic_round"
+                    android:text="Remote"
+                    android:lines="1"
+                    android:paddingTop="4dp"
+                    android:paddingHorizontal="12dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:backgroundTint="#F2F2F2"
+                    android:textAlignment="center"
+                    android:fontFamily="@font/poppins_regular"
+                    android:layout_marginEnd="12dp"
+                    tools:ignore="HardcodedText" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="38dp"
+                    android:background="@drawable/ic_round"
+                    android:lines="1"
+                    android:text="Web Development"
+                    android:paddingTop="4dp"
+                    android:paddingHorizontal="12dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:backgroundTint="#F2F2F2"
+                    android:textAlignment="center"
+                    android:fontFamily="@font/poppins_regular"
+                    android:layout_marginEnd="12dp"
+                    tools:ignore="HardcodedText" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+<!--    </LinearLayout>-->
+
+
+
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/careerTabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:contentDescription="Tab Layout Career"
+            tools:ignore="HardcodedText"
+            app:tabIndicatorAnimationMode="elastic"
+            app:tabSelectedTextColor="@color/primary"
+            app:tabTextColor="@android:color/darker_gray"
+            app:tabIndicatorFullWidth="true"
+            />
+
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/careerViewPager"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/careerTabLayout"
+            android:padding="18dp"
+            android:layout_weight="1"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/bottom_sheet_behavior"
+        android:orientation="horizontal"
+        android:paddingHorizontal="18dp"
+        android:paddingBottom="24dp">
+
+        <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonApplyNow"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:background="@drawable/ic_radius"
+                app:backgroundTint="@color/primary"
+                android:text="Apply Now"
+                android:layout_weight="1"
+                tools:ignore="HardcodedText,VisualLintButtonSize"
+                android:layout_marginEnd="12dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonBookmark"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/ic_radius"
+            android:contentDescription="Button Bookmark"
+            app:backgroundTint="@color/tp1"
+            app:icon="@drawable/bookmark"
+            app:iconGravity="textStart"
+            app:iconPadding="0dp"
+            app:iconSize="24dp"
+            app:iconTint="@color/primary"
+            tools:ignore="HardcodedText,RedundantDescriptionCheck" />
+    </LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

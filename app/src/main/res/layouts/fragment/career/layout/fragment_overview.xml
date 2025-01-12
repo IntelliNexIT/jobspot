@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:contentDescription="About ScrollView"
+    tools:ignore="HardcodedText">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Description"
+            android:fontFamily="@font/poppins_semibold"
+            android:textSize="16sp"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/textJobDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/lorem_ipsum"
+            android:lines="2"
+            android:fontFamily="@font/poppins_regular"
+            android:textSize="13sp"
+            android:contentDescription="Job Description"
+            android:layout_marginTop="4dp"
+            />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Experience Level"
+            android:fontFamily="@font/poppins_semibold"
+            android:textSize="16sp"
+            android:layout_marginTop="24dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingStart="20dp"
+            tools:ignore="RtlSymmetry"
+            android:layout_marginTop="4dp">
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/experience_level"
+                android:layout_gravity="center"
+                />
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/textExperienceLevel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Intermediate"
+                android:textSize="13sp"
+                android:fontFamily="@font/poppins_medium"
+                android:layout_marginStart="10dp"/>
+        </LinearLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Est. Budget"
+            android:fontFamily="@font/poppins_semibold"
+            android:textSize="16sp"
+            android:layout_marginTop="24dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingStart="20dp"
+            tools:ignore="RtlSymmetry"
+            android:layout_marginTop="4dp">
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/budget"
+                />
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/textSalary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$280 - $300"
+                android:textSize="13sp"
+                android:fontFamily="@font/poppins_medium"
+                android:layout_marginStart="10dp"/>
+        </LinearLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Skills"
+            android:fontFamily="@font/poppins_semibold"
+            android:textSize="16sp"
+            android:layout_marginTop="24dp"/>
+
+        <LinearLayout
+            android:id="@+id/skillList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingStart="20dp"
+            tools:ignore="RtlSymmetry"
+            android:layout_marginTop="4dp"/>
+
+    </LinearLayout>
+</ScrollView>

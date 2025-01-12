@@ -9,9 +9,9 @@
         android:title="Connection"
         />
     <item
-        android:id="@+id/nav_feed"
-        android:icon="@drawable/feed"
-        android:title="Feed" />
+        android:id="@+id/nav_career"
+        android:icon="@drawable/career"
+        android:title="Career" />
     <item
         android:id="@+id/nav_bookmark"
         android:icon="@drawable/bookmark"

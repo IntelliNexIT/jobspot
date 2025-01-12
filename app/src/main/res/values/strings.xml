@@ -44,4 +44,19 @@
     </string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="new_job_button">New Job Button</string>
+    <string name="new_feed_button">New Feed Button</string>
+    <string name="career">Career</string>
+    <string name="more_button">More Button</string>
+    <string name="date">Date</string>
+    <string name="dot">•</string>
+    <string name="good_morning">Good morning!</string>
+    <string name="guest">Guest</string>
+    <string name="search_here">Search here...</string>
+    <string name="month">/month</string>
+    <string name="api_url">http://192.168.1.242:8001/api/</string>
+    <string name="recent_jobs">Recent Jobs</string>
+    <string name="see_all">See all</string>
+    <string name="find_your_job">Find Your Job</string>
+    <string name="connection">Connection</string>
 </resources>
