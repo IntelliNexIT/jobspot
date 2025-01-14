@@ -3,6 +3,14 @@ plugins {
     alias(libs.plugins.kotlin.android)
 }
 
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+
 android {
     namespace = "com.intellinex.jobspot"
     compileSdk = 35
@@ -38,7 +46,8 @@ android {
             res {
                 srcDirs("src/main/res", "src/main/res/layouts/auth", "src/main/res/layouts/screen",
                     "src/main/res/layouts/starter", "src/main/res/layouts/fragment", "src/main/res/components/card",
-                    "src/main/res/components/list", "src/main/res/components/material", "src/main/res/layouts/fragment/career"
+                    "src/main/res/components/list", "src/main/res/components/material", "src/main/res/layouts/fragment/career",
+                    "src/main/res/layouts/form", "src/main/res/layouts/fragment/bottom"
                 )
             }
         }
@@ -73,4 +82,10 @@ dependencies {
 
     // ImageView URL
     implementation ("com.github.bumptech.glide:glide:4.16.0")
+
+    // RICH TEXT
+    implementation("jp.wasabeef:richeditor-android:2.0.0")
+
+    // AppWrite
+    implementation("io.appwrite:sdk-for-android:6.1.0")
 }

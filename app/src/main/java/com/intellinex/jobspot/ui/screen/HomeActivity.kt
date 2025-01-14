@@ -1,26 +1,29 @@
 package com.intellinex.jobspot.ui.screen
 
+import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
+import android.util.Base64
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.imageview.ShapeableImageView
 import com.intellinex.jobspot.R
-import com.intellinex.jobspot.databinding.ActivityHomeBinding
 import com.intellinex.jobspot.ui.fragment.AccountFragment
 import com.intellinex.jobspot.ui.fragment.BookmarkFragment
-import com.intellinex.jobspot.ui.fragment.BottomSheetFragment
+import com.intellinex.jobspot.ui.fragment.bottom.BottomSheetFragment
 import com.intellinex.jobspot.ui.fragment.CareerFragment
 import com.intellinex.jobspot.ui.fragment.ConnectionFragment
-import com.intellinex.jobspot.ui.fragment.FeedFragment
 import com.intellinex.jobspot.ui.fragment.HomeFragment
+import org.json.JSONObject
 
 class HomeActivity : AppCompatActivity() {
+
+    private lateinit var sharedPreferences: SharedPreferences
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -54,5 +57,34 @@ class HomeActivity : AppCompatActivity() {
             bottomSheet.show(supportFragmentManager, bottomSheet.tag)
         }
 
+        // Authenticate
+        sharedPreferences = getSharedPreferences("MY_PREFS", Context.MODE_PRIVATE)
+
+        if(isAuthenticated()){
+            Toast.makeText(this, "You're authenticated", Toast.LENGTH_LONG).show()
+        }else {
+            Toast.makeText(this, "You're not authenticated", Toast.LENGTH_LONG).show()
+        }
+
+    }
+
+    private fun isAuthenticated(): Boolean {
+        val token = sharedPreferences.getString("JWT_TOKEN", null)
+        return token != null && !isTokenExpired(token)
+    }
+
+    private fun isTokenExpired(token: String): Boolean {
+        // Optionally decode the JWT to check its expiration
+        // Example to decode JWT (you can use a library like jwt_decoder)
+        val parts = token.split(".")
+        if (parts.size != 3) return true // Not a valid JWT
+
+        // Decode the payload (the second part)
+        val payload = String(Base64.decode(parts[1], Base64.DEFAULT))
+        val jsonObject = JSONObject(payload)
+        val exp = jsonObject.getLong("exp") // Get expiration time
+
+        // Check if the current time is past the expiration time
+        return exp < System.currentTimeMillis() / 1000
     }
 }

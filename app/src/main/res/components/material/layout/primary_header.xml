@@ -87,6 +87,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/userInformationAccount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/profileInformation"
@@ -117,5 +118,59 @@
             />
 
     </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/userInformationAccount"
+        android:padding="18dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="12k Conncection"
+                android:background="@drawable/ic_small_radius"
+                android:fontFamily="@font/poppins_regular"
+                android:textSize="12sp"
+                android:paddingTop="12dp"
+                android:textColor="@color/white"
+                android:paddingHorizontal="12dp"
+                android:paddingBottom="8dp"
+                android:backgroundTint="#10FFFFFF"
+                android:layout_marginEnd="10dp"
+                />
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2k Following"
+                android:background="@drawable/ic_small_radius"
+                android:fontFamily="@font/poppins_regular"
+                android:textSize="12sp"
+                android:paddingTop="12dp"
+                android:textColor="@color/white"
+                android:paddingHorizontal="12dp"
+                android:paddingBottom="8dp"
+                android:backgroundTint="#10FFFFFF"
+                />
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:background="@drawable/ic_small_radius"
+            android:text="Edit Profile"
+            app:iconTint="@color/white"
+            android:textSize="12sp"
+            android:fontFamily="@font/poppins_regular"
+            app:iconSize="16dp"
+            app:icon="@drawable/ic_edit"
+            android:layout_alignParentEnd="true"
+            app:backgroundTint="#10FFFFFF"/>
+
+    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

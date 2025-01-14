@@ -11,6 +11,7 @@
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">25dp</item>
     </style>
+
     <style name="Circular74" parent="">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">37dp</item>

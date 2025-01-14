@@ -55,7 +55,7 @@ class CareerFragment : Fragment() {
 
     private fun fetchCareers() {
 
-        RetrofitClient.instance.getCareers().enqueue(object : Callback<ApiResponse> {
+        RetrofitClient.getApi(this).getCareers().enqueue(object : Callback<ApiResponse> {
             override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
                 if (response.isSuccessful) {
                     val careers = response.body()?.data?.data // This returns the list of Job

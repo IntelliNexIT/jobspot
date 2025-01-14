@@ -15,10 +15,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JobSpot">
         <activity
-            android:name=".ui.screen.CareerDetailActivity"
+            android:name=".ui.auth.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.screen.CareerDetailAcitivity"
+            android:name=".ui.screen.form.NewFeedActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.screen.form.CareerPostActivity"
+            android:exported="false"
+            android:theme="@style/Theme.JobSpot" />
+        <activity
+            android:name=".ui.screen.CareerDetailActivity"
             android:exported="false" />
         <activity
             android:name=".ui.screen.HomeActivity"

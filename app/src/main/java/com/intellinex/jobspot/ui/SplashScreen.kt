@@ -18,7 +18,7 @@ class SplashScreen : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
 
-        sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE)
+        sharedPreferences = getSharedPreferences("MY_PREFS", MODE_PRIVATE)
 
         Handler().postDelayed({
 

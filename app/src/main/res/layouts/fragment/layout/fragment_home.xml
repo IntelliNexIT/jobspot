@@ -6,14 +6,89 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include android:id="@+id/headerContainer" layout="@layout/header_component" />
+<!--    <include android:id="@+id/headerContainer" layout="@layout/header_component" />-->
+    <RelativeLayout
+        android:id="@+id/header_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:paddingTop="50dp"
+        android:layout_marginHorizontal="18dp"
+        android:paddingBottom="18dp"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:id="@+id/avatar_container"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            tools:ignore="UselessParent">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/avatar"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:clickable="true"
+                app:srcCompat="@drawable/logo"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <LinearLayout
+                android:id="@+id/info_container"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginStart="10dp"
+                >
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/good_morning"
+                    android:fontFamily="@font/poppins_regular"
+                    />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/nickname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/guest"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textSize="22sp"
+                    android:layout_marginTop="-10dp"
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_notification"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_radius"
+            android:contentDescription="Button Notification"
+            android:gravity="center"
+            app:backgroundTint="@color/tp1"
+            app:icon="@drawable/bell"
+            app:iconGravity="textEnd"
+            app:iconPadding="0dp"
+            app:iconSize="24dp"
+            app:iconTint="@color/primary"
+            tools:ignore="HardcodedText" />
+
+    </RelativeLayout>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/headerContainer"
+        app:layout_constraintTop_toBottomOf="@id/header_container"
         app:layout_constraintBottom_toBottomOf="parent"
         >
 

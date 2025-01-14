@@ -54,9 +54,14 @@
     <string name="guest">Guest</string>
     <string name="search_here">Search here...</string>
     <string name="month">/month</string>
-    <string name="api_url">http://192.168.1.242:8001/api/</string>
+    <string name="api_url">http://172.10.0.247:8001/api/</string>
     <string name="recent_jobs">Recent Jobs</string>
     <string name="see_all">See all</string>
     <string name="find_your_job">Find Your Job</string>
     <string name="connection">Connection</string>
+    <string name="job_title">Job Title</string>
+    <string name="type_of_workspace">Type of Workspace</string>
+    <string name="job_location">Job Location</string>
+    <string name="employment_type">Employment type</string>
+    <string name="job_description">Job Description</string>
 </resources>

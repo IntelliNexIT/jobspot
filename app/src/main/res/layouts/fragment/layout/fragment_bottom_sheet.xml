@@ -24,6 +24,7 @@
             android:layout_weight="1"
             >
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonNewFeed"
             android:layout_width="56dp"
             android:layout_height="56dp"
             app:icon="@drawable/feed"
@@ -52,6 +53,7 @@
             >
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonNewCareerPost"
             android:layout_width="56dp"
             android:layout_height="56dp"
             android:background="@drawable/ic_round"
