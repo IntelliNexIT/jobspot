@@ -1,6 +1,7 @@
 package com.intellinex.jobspot.api.services
 
 import com.intellinex.jobspot.api.resource.SignInResponse
+import com.intellinex.jobspot.api.resource.UserResponse
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.POST
@@ -13,4 +14,7 @@ data class SignInRequest(
 interface AuthService {
     @POST("auth/signin")
     fun signin(@Body request: SignInRequest): Call<SignInResponse>
+
+    @POST("me")
+    fun user(): Call<UserResponse>
 }

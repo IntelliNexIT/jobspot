@@ -8,6 +8,7 @@
     android:gravity="center"
     tools:context=".ui.SplashScreen"
     android:orientation="vertical"
+    android:background="#FFFFFF"
     >
 
     <ImageView

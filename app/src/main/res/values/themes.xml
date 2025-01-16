@@ -15,6 +15,15 @@
     <style name="Circular74" parent="">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">37dp</item>
+
+    </style>
+    <style name="CircularAvatar" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">32dp</item>
+    </style>
+    <style name="Circular48" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">24dp</item>
     </style>
 
     <style name="TabText" parent="TextAppearance.Design.Tab">
@@ -27,6 +36,23 @@
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/primary</item>
         <item name="android:fontFamily">@font/poppins_medium</item>
+    </style>
+    
+    <style name="ModernBottomNavigationView" parent="Widget.Design.BottomNavigationView">
+        <item name="itemBackground">@color/white</item>
+        <item name="itemIconTint">@color/primary</item>
+        <item name="itemTextColor">@color/primary</item>
+        <item name="itemFillColor">@color/primary</item>
+        <item name="android:topRightRadius">20dp</item>
+        <item name="android:topLeftRadius">20dp</item>
+    </style>
+
+    <style name="CustomCheckBox" parent="Widget.Material3.CompoundButton.CheckBox">
+        <item name="android:buttonTint">@color/aws</item>
+    </style>
+
+    <style name="CustomButton" parent="Widget.Material3.CompoundButton.CheckBox">
+        <item name="android:radius">12dp</item>
     </style>
 
 </resources>

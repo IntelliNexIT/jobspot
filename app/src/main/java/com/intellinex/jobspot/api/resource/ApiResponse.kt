@@ -40,9 +40,3 @@ data class Job(
     val created_at: String?,
     val updated_at: String?
 )
-
-data class Link(
-    val url: String?,
-    val label: String,
-    val active: Boolean
-)

@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#f8f8f8">
 
 <!--    <include android:id="@+id/headerContainer" layout="@layout/header_component" />-->
     <RelativeLayout
@@ -33,6 +34,7 @@
                 android:layout_height="48dp"
                 android:clickable="true"
                 app:srcCompat="@drawable/logo"
+                app:shapeAppearance="@style/CircularShape"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <LinearLayout
@@ -121,7 +123,9 @@
                     android:hint="@string/search_here"
                     android:lines="1"
                     android:maxLines="1"
+                    android:minLines="1"
                     android:paddingStart="13dp"
+                    android:inputType="text"
                     android:paddingTop="2dp"
                     android:textColor="@android:color/darker_gray"
                     android:textSize="14sp"
@@ -183,17 +187,15 @@
                 app:layout_constraintTop_toBottomOf="@id/layoutHeaderOfFindJobSection">
 
                 <!-- Left Item -->
-                <LinearLayout
-                    android:id="@+id/remoteLayout"
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardViewRemoteJob"
                     android:layout_width="0dp"
                     android:layout_height="200dp"
-                    android:orientation="vertical"
                     android:background="@drawable/ic_radius"
                     android:layout_weight="1"
-                    android:gravity="center"
                     android:backgroundTint="@color/azure"
-                    android:padding="16dp"
                     android:layout_marginEnd="8dp"
+                    app:strokeWidth="0dp"
                     >
 
                     <com.google.android.material.textview.MaterialTextView
@@ -202,17 +204,21 @@
                         android:text="44.5k"
                         android:textSize="24sp"
                         android:textStyle="bold"
-                        android:textColor="@color/white"
-                        tools:ignore="HardcodedText" />
+                        android:textColor="@color/black"
+                        android:layout_marginBottom="12dp"
+                        tools:ignore="HardcodedText"
+                        android:layout_gravity="center"/>
 
                     <com.google.android.material.textview.MaterialTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Remote Job"
                         android:textSize="16sp"
-                        android:textColor="@color/white"
-                        tools:ignore="HardcodedText" />
-                </LinearLayout>
+                        android:textColor="@color/black"
+                        android:layout_marginTop="12dp"
+                        tools:ignore="HardcodedText"
+                        android:layout_gravity="center"/>
+                </com.google.android.material.card.MaterialCardView>
 
             <!-- Right Container for Two Items -->
                 <LinearLayout
@@ -223,17 +229,16 @@
                     >
 
                     <!-- First Right Item -->
-                    <LinearLayout
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cardViewFullTimeJob"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
                         android:background="@drawable/ic_radius"
                         android:backgroundTint="@color/secondary"
-                        android:orientation="vertical"
-                        android:gravity="center"
-                        android:padding="16dp"
                         android:layout_marginBottom="8dp"
-                        >
+                        tools:ignore="NestedWeights"
+                        app:strokeWidth="0dp">
 
                         <com.google.android.material.textview.MaterialTextView
                             android:layout_width="wrap_content"
@@ -241,26 +246,31 @@
                             android:text="66.8k"
                             android:textSize="24sp"
                             android:textStyle="bold"
-                            android:textColor="@color/white" />
+                            android:textColor="@color/white"
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="6dp"
+                            android:fontFamily="@font/poppins_semibold"/>
 
                         <com.google.android.material.textview.MaterialTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Full Time"
+                            android:fontFamily="@font/poppins_regular"
                             android:textSize="16sp"
-                            android:textColor="@color/white" />
-                    </LinearLayout>
+                            android:textColor="@color/white"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="18dp"/>
+                    </com.google.android.material.card.MaterialCardView>
 
                     <!-- Second Right Item -->
-                    <LinearLayout
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cardViewPartTime"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
                         android:background="@drawable/ic_radius"
                         android:backgroundTint="@color/aws"
-                        android:orientation="vertical"
-                        android:gravity="center"
-                        android:padding="16dp">
+                        app:strokeWidth="0dp">
 
                         <com.google.android.material.textview.MaterialTextView
                             android:layout_width="wrap_content"
@@ -268,15 +278,21 @@
                             android:text="38.9k"
                             android:textSize="24sp"
                             android:textStyle="bold"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:layout_marginBottom="6dp"
+                            android:layout_gravity="center"
                             android:textColor="@color/white" />
 
                         <com.google.android.material.textview.MaterialTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Part Time"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/poppins_regular"
+                            android:layout_marginTop="18dp"
                             android:textSize="16sp"
                             android:textColor="@color/white" />
-                    </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
 
                 </LinearLayout>
 

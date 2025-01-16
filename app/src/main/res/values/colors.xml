@@ -13,4 +13,12 @@
     <color name="purple">#BEAFFE</color>
     <color name="bg">#F9F9F9</color>
     <color name="gray">#4A4A4A</color>
+    <color name="darkLight">#999999</color>
+    <color name="ic_background">#F1EEFB</color>
+    <color name="icon_color">#6749EA</color>
+    <color name="cbc9d4">#CBC9D4</color>
+    <color name="F2">#f2f2f2</color>
+    <color name="success">#00D091</color>
+    <color name="fail">#F05548</color>
+    <color name="warning">#FBC205</color>
 </resources>

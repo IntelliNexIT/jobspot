@@ -1,4 +1,4 @@
-package com.intellinex.jobspot.ui.screen
+package com.intellinex.jobspot.ui.screen.ungroup
 
 import android.annotation.SuppressLint
 import android.os.Bundle

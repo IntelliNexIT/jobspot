@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/jobTypeButtonCheck"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Full time"
+        android:button="@drawable/custom_button"
+        android:background="@drawable/custom_button"
+        android:paddingHorizontal="14dp"
+        android:fontFamily="@font/poppins_regular"
+        android:layout_marginEnd="10dp"
+        android:textColor="@color/custom_button_text_color"
+        tools:ignore="HardcodedText" />
+</LinearLayout>

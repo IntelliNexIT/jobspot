@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -15,6 +16,33 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JobSpot">
         <activity
+            android:name=".ui.screen.ungroup.FeedDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.screen.ungroup.NotificationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.screen.account.EditProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.screen.account.HelpCenterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.screen.account.SettingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.screen.account.ResumeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.screen.account.ApplicationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.screen.account.CompanyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.screen.account.ProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.auth.LoginActivity"
             android:exported="false" />
         <activity
@@ -25,7 +53,7 @@
             android:exported="false"
             android:theme="@style/Theme.JobSpot" />
         <activity
-            android:name=".ui.screen.CareerDetailActivity"
+            android:name=".ui.screen.ungroup.CareerDetailActivity"
             android:exported="false" />
         <activity
             android:name=".ui.screen.HomeActivity"

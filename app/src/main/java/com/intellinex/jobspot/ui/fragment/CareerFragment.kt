@@ -14,7 +14,7 @@ import com.intellinex.jobspot.api.instances.RetrofitClient
 import retrofit2.Callback
 import com.intellinex.jobspot.api.resource.ApiResponse
 import com.intellinex.jobspot.databinding.FragmentCareerBinding
-import com.intellinex.jobspot.ui.screen.CareerDetailActivity
+import com.intellinex.jobspot.ui.screen.ungroup.CareerDetailActivity
 import retrofit2.Call
 import retrofit2.Response
 

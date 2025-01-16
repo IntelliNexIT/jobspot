@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:paddingBottom="30dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingHorizontal="18dp"
+        android:paddingTop="8dp"
+        android:layout_gravity="center_horizontal">
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semibold"
+            android:textSize="20sp"
+            android:text="Search Filter"
+            tools:ignore="HardcodedText"
+            android:layout_weight="1"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonClose"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            app:backgroundTint="@android:color/transparent"
+            app:icon="@android:drawable/ic_menu_close_clear_cancel"
+            app:iconPadding="0dp"
+            app:iconSize="22dp"
+            app:iconTint="@android:color/darker_gray"
+            tools:ignore="SpeakableTextPresentCheck" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="18dp"
+                android:layout_marginTop="20dp">
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textSize="16sp"
+                    android:text="Type of Workspace"
+                    android:layout_marginBottom="10dp"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerViewWorkspace"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="18dp"
+                android:layout_marginTop="20dp">
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textSize="16sp"
+                    android:text="Job Type"
+                    android:layout_marginBottom="10dp"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerViewJobType"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    android:orientation="horizontal"
+                    android:nestedScrollingEnabled="false"
+                    android:scrollbars="none"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="18dp"
+                android:layout_marginTop="20dp">
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textSize="16sp"
+                    android:text="Industry"
+                    android:layout_marginBottom="10dp"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerViewIndustry"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="18dp"
+                android:layout_marginTop="20dp">
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textSize="16sp"
+                    android:text="Location"
+                    android:layout_marginBottom="10dp"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerViewLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:paddingHorizontal="18dp"
+                android:layout_marginBottom="10dp">
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/buttonReset"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/ic_radius"
+                    app:backgroundTint="@color/tp1"
+                    android:layout_marginEnd="6dp"
+                    android:text="Reset"
+                    android:fontFamily="@font/poppins_medium"
+                    android:paddingTop="10dp"
+                    android:textColor="@color/primary"
+                    />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/buttonApply"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="2"
+                    android:background="@drawable/ic_radius"
+                    app:backgroundTint="@color/primary"
+                    android:layout_marginEnd="6dp"
+                    android:text="Apply"
+                    android:fontFamily="@font/poppins_medium"
+                    android:paddingTop="10dp"
+                    android:textColor="@color/white"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

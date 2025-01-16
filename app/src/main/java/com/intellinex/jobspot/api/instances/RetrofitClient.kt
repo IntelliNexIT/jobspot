@@ -3,6 +3,8 @@ package com.intellinex.jobspot.api.instances
 import com.intellinex.jobspot.R
 import com.intellinex.jobspot.api.services.ApiService
 import com.intellinex.jobspot.ui.fragment.CareerFragment
+import com.intellinex.jobspot.ui.fragment.FeedFragment
+import com.intellinex.jobspot.ui.fragment.bottom.FilterFragment
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -21,7 +23,31 @@ object RetrofitClient {
     private var apiService: ApiService? = null
     fun getApi(context: CareerFragment): ApiService {
         if(apiService == null){
-            var apiUrl = context.getString(R.string.api_url)
+            val apiUrl = context.getString(R.string.api_url)
+            apiService = Retrofit.Builder()
+                .baseUrl(apiUrl)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+                .create(ApiService::class.java)
+        }
+        return apiService!!
+    }
+
+    fun getIndustryApi(context: FilterFragment): ApiService {
+        if (apiService == null){
+            val apiUrl = context.getString(R.string.api_url)
+            apiService = Retrofit.Builder()
+                .baseUrl(apiUrl)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+                .create(ApiService::class.java)
+        }
+        return apiService!!
+    }
+
+    fun getFeedsApi(context: FeedFragment): ApiService {
+        if(apiService == null) {
+            val apiUrl = context.getString(R.string.api_url)
             apiService = Retrofit.Builder()
                 .baseUrl(apiUrl)
                 .addConverterFactory(GsonConverterFactory.create())

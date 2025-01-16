@@ -47,7 +47,8 @@ android {
                 srcDirs("src/main/res", "src/main/res/layouts/auth", "src/main/res/layouts/screen",
                     "src/main/res/layouts/starter", "src/main/res/layouts/fragment", "src/main/res/components/card",
                     "src/main/res/components/list", "src/main/res/components/material", "src/main/res/layouts/fragment/career",
-                    "src/main/res/layouts/form", "src/main/res/layouts/fragment/bottom"
+                    "src/main/res/layouts/form", "src/main/res/layouts/fragment/bottom", "src/main/res/layouts/screen/account",
+                    "src/main/res/components/dialog"
                 )
             }
         }

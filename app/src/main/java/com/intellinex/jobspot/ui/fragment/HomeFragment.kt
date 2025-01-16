@@ -15,6 +15,8 @@ import android.widget.Toast.*
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
+import com.bumptech.glide.Glide
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.imageview.ShapeableImageView
 import com.google.android.material.textview.MaterialTextView
@@ -27,8 +29,11 @@ import com.intellinex.jobspot.api.resource.HotResponse
 import com.intellinex.jobspot.api.resource.RecentJobResponse
 import com.intellinex.jobspot.databinding.FragmentHomeBinding
 import com.intellinex.jobspot.ui.auth.LoginActivity
-import com.intellinex.jobspot.ui.screen.CareerDetailActivity
+import com.intellinex.jobspot.ui.fragment.bottom.FilterFragment
+import com.intellinex.jobspot.ui.screen.ungroup.CareerDetailActivity
+import com.intellinex.jobspot.ui.screen.ungroup.NotificationActivity
 import com.intellinex.jobspot.utils.Authentication
+import com.intellinex.jobspot.utils.UserManager
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -46,6 +51,7 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var avatarImage: ShapeableImageView
+    private lateinit var nickname: MaterialTextView
 
     private lateinit var sharedPreferences: SharedPreferences
 
@@ -61,6 +67,7 @@ class HomeFragment : Fragment() {
 
         // Access the included header component's avatar ImageView
         avatarImage = binding.headerContainer.findViewById(R.id.avatar)
+        nickname = binding.nickname
 
         sharedPreferences = requireActivity().getSharedPreferences("MY_PREFS", Context.MODE_PRIVATE)
 
@@ -72,10 +79,9 @@ class HomeFragment : Fragment() {
         fetchHot()
         fetchRecentJob()
         setUpRecentJobAdapter()
-
+        loadUserInformation()
 
         val auth = Authentication(sharedPreferences)
-
 
         avatarImage.setOnClickListener {
 
@@ -87,12 +93,50 @@ class HomeFragment : Fragment() {
                 fragmentTransaction.replace(R.id.fragment_container, accountFragment) // Replace with your container ID
                 fragmentTransaction.addToBackStack(null) // Optional: adds the transaction to the back stack
                 fragmentTransaction.commit()
+
+                val bottomNavigationView = requireActivity().findViewById<BottomNavigationView>(R.id.bottom_navigation)
+                bottomNavigationView.selectedItemId = R.id.nav_account
+
             }else{
 //                makeText(this.context, "You're not authenticated yet. Please Login.", LENGTH_LONG).show()
-                "You have been authenticated. Please login to continue.".showDialog()
+                "You haven't been authenticated. Please login to continue.".showDialog()
             }
         }
 
+        val notificationButton = view.findViewById<MaterialButton>(R.id.button_notification)
+        notificationButton.setOnClickListener {
+            val intent = Intent(this.context, NotificationActivity::class.java)
+            startActivity(intent)
+        }
+
+        val buttonFilter = view.findViewById<MaterialButton>(R.id.buttonFilter)
+        buttonFilter.setOnClickListener {
+            val filterFragment = FilterFragment()
+            filterFragment.show(parentFragmentManager, filterFragment.tag)
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        loadUserInformation()
+    }
+    fun loadUserInformation() {
+        val user = UserManager.user
+        if (user != null) {
+                context?.let { context ->
+                    Glide.with(context)
+                        .load(user.avatar)
+                        .placeholder(R.drawable.logo) // Add a placeholder image
+                        .error(R.drawable.ic_radius) // Add an error image
+                        .into(avatarImage)
+                }
+                nickname.text = user.nickname
+                Log.d("HomeFragment", "User information loaded: ${user.nickname}")
+
+        } else {
+            // Optionally handle the case where user information is not available
+            Log.d("HomeFragment", "User information is not available.")
+        }
     }
 
     private fun fetchHot(){
