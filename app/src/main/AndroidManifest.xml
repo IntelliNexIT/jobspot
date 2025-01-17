@@ -16,6 +16,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JobSpot">
         <activity
+            android:name=".ui.screen.account.AboutAppActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.screen.account.LanguageActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.screen.ungroup.FeedDetailActivity"
             android:exported="false" />
         <activity

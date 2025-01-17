@@ -1,11 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="login">ចូលគណនី</string>
+    <string name="recent_jobs">ការងារថ្មីៗ</string>
+    <string name="see_all">មើលទាំងអស់</string>
+    <string name="find_your_job">ស្វែងរកការងារ</string>
+    <string name="connection">ការតភ្ជាប់</string>
+    <string name="job_title">មុខដំណែងការងារ</string>
+    <string name="type_of_workspace">ប្រភេទកន្លែងធ្វើការ</string>
+    <string name="job_location">ទីតាំងការងារ</string>
+    <string name="employment_type">ប្រភេទនយោជក</string>
+    <string name="job_description">ពិពណ៌នាការងារ</string>
+    <string name="new_job_button">New Job Button</string>
+    <string name="new_feed_button">New Feed Button</string>
+    <string name="career">ការងារ</string>
+    <string name="more_button">More Button</string>
+    <string name="date">Date</string>
+    <string name="dot">•</string>
+    <string name="good_morning">អរុណសួស្តី!</string>
+    <string name="guest">Guest</string>
+    <string name="search_here">ស្វែងរកនៅទីនេះ...</string>
+    <string name="month">/month</string>
     <string name="app_name">JobSpot</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
-
+    <string name="next">បន្ទាប់</string>
+    <string name="previous">ពីមុន</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
         volutpat, dolor id interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus
@@ -42,36 +63,13 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="new_job_button">New Job Button</string>
-    <string name="new_feed_button">New Feed Button</string>
-    <string name="career">Career</string>
-    <string name="more_button">More Button</string>
-    <string name="date">Date</string>
-    <string name="dot">•</string>
-    <string name="good_morning">Good morning!</string>
-    <string name="guest">Guest</string>
-    <string name="search_here">Search here...</string>
-    <string name="month">/month</string>
     <string name="api_url">http://172.10.0.247:8001/api/</string>
-    <!--    <string name="api_url">http://10.11.11.68:8001/api/</string>-->
-    <!--            <string name="api_url">http://192.168.1.4:8001/api/</string>-->
-    <string name="recent_jobs">Recent Jobs</string>
-    <string name="see_all">See all</string>
-    <string name="find_your_job">Find Your Job</string>
-    <string name="connection">Connection</string>
-    <string name="job_title">Job Title</string>
-    <string name="type_of_workspace">Type of Workspace</string>
-    <string name="job_location">Job Location</string>
-    <string name="employment_type">Employment type</string>
-    <string name="job_description">Job Description</string>
-    <string name="login">Login</string>
-    <string name="english">English</string>
-    <string name="khmer">Khmer</string>
-    <string name="chinese">Chinese</string>
-    <string name="language">Language</string>
-    <string name="choose_your_prefered_language">Choose your preferred language</string>
+<!--    <string name="api_url">http://192.168.1.4:8001/api/</string>-->
+    <string name="english">អង់គ្លេស</string>
+    <string name="khmer">ខ្មែរ</string>
+    <string name="chinese">ចិន</string>
+    <string name="language">ភាសា</string>
+    <string name="choose_your_prefered_language">ជ្រើសរើសភាសាដែលអ្នកពេញចិត្ត</string>
     <string name="home">Home</string>
     <string name="feed">Feed</string>
     <string name="account">Account</string>

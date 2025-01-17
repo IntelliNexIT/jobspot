@@ -11,8 +11,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast.*
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
@@ -33,6 +33,7 @@ import com.intellinex.jobspot.ui.fragment.bottom.FilterFragment
 import com.intellinex.jobspot.ui.screen.ungroup.CareerDetailActivity
 import com.intellinex.jobspot.ui.screen.ungroup.NotificationActivity
 import com.intellinex.jobspot.utils.Authentication
+import com.intellinex.jobspot.utils.InformationDialog
 import com.intellinex.jobspot.utils.UserManager
 import retrofit2.Call
 import retrofit2.Callback
@@ -98,8 +99,10 @@ class HomeFragment : Fragment() {
                 bottomNavigationView.selectedItemId = R.id.nav_account
 
             }else{
-//                makeText(this.context, "You're not authenticated yet. Please Login.", LENGTH_LONG).show()
-                "You haven't been authenticated. Please login to continue.".showDialog()
+                val informationDialog = InformationDialog(this.requireContext(), "Unauthenticated", "You have not been authenticated yet. Please sign in to continue.")
+                informationDialog.startInformationDialog()
+                informationDialog.setNegativeText("No")
+                informationDialog.setAlertIcon(ContextCompat.getDrawable(this.requireContext(),R.drawable.warning)!!)
             }
         }
 
@@ -149,12 +152,12 @@ class HomeFragment : Fragment() {
                     viewPager.adapter = imageCarouselAdapter
                     startAutoScroll(images.size)
                 }else{
-                    makeText(context, "Failed to load images", LENGTH_SHORT).show()
+                    Log.e("HOME_FRAGMENT", "Failed to load images")
                 }
             }
 
             override fun onFailure(call: Call<HotResponse>, t: Throwable) {
-                makeText(context, "Error: ${t.message}", LENGTH_SHORT).show()
+               Log.e("HOME_FREGMENT", t.message.toString())
             }
         })
     }
@@ -210,36 +213,36 @@ class HomeFragment : Fragment() {
         handler.removeCallbacksAndMessages(null) // Stop scrolling when the view is destroyed
     }
 
-    private fun String.showDialog() {
-        // Inflate the custom dialog layout
-        val dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.dialong_alert, null)
-
-        // Create the AlertDialog
-        val dialogBuilder = AlertDialog.Builder(requireContext())
-            .setView(dialogView)
-            .setCancelable(true)
-
-        // Create the dialog
-        val dialog = dialogBuilder.create()
-
-        val textMessage = dialogView.findViewById<MaterialTextView>(R.id.textMessage)
-        val buttonCancel = dialogView.findViewById<MaterialButton>(R.id.cancelButton)
-        val confirmButton = dialogView.findViewById<MaterialButton>(R.id.confirmButtom)
-
-        textMessage.text = this
-
-        buttonCancel.setOnClickListener {
-            dialog.dismiss()
-        }
-
-        confirmButton.setOnClickListener {
-            dialog.dismiss()
-
-            val intent = Intent(context, LoginActivity::class.java)
-            startActivity(intent)
-        }
-
-        dialog.show()
-    }
+//    private fun String.showDialog() {
+//        // Inflate the custom dialog layout
+//        val dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.dialong_alert, null)
+//
+//        // Create the AlertDialog
+//        val dialogBuilder = AlertDialog.Builder(requireContext())
+//            .setView(dialogView)
+//            .setCancelable(true)
+//
+//        // Create the dialog
+//        val dialog = dialogBuilder.create()
+//
+//        val textMessage = dialogView.findViewById<MaterialTextView>(R.id.textMessage)
+//        val buttonCancel = dialogView.findViewById<MaterialButton>(R.id.cancelButton)
+//        val confirmButton = dialogView.findViewById<MaterialButton>(R.id.confirmButtom)
+//
+//        textMessage.text = this
+//
+//        buttonCancel.setOnClickListener {
+//            dialog.dismiss()
+//        }
+//
+//        confirmButton.setOnClickListener {
+//            dialog.dismiss()
+//
+//            val intent = Intent(context, LoginActivity::class.java)
+//            startActivity(intent)
+//        }
+//
+//        dialog.show()
+//    }
 
 }

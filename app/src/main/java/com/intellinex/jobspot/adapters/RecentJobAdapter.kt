@@ -12,6 +12,7 @@ import com.intellinex.jobspot.R
 import com.intellinex.jobspot.adapters.CareerAdapter.CareerViewHolder
 import com.intellinex.jobspot.api.resource.Job
 import com.intellinex.jobspot.databinding.CardCareerBinding
+import com.intellinex.jobspot.databinding.HomeCardCareerBinding
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit
@@ -19,7 +20,7 @@ import java.time.temporal.ChronoUnit
 class RecentJobAdapter(
     private val onItemClick: (Job) -> Unit
 ): RecyclerView.Adapter<RecentJobAdapter.CareerViewHolder>() {
-    inner class CareerViewHolder(val binding: CardCareerBinding) : RecyclerView.ViewHolder(binding.root)
+    inner class CareerViewHolder(val binding: HomeCardCareerBinding) : RecyclerView.ViewHolder(binding.root)
 
     private val diffCallback = object : DiffUtil.ItemCallback<Job>() {
         override fun areItemsTheSame(oldItem: Job, newItem: Job): Boolean {
@@ -40,7 +41,7 @@ class RecentJobAdapter(
         }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): com.intellinex.jobspot.adapters.RecentJobAdapter.CareerViewHolder {
-        return CareerViewHolder(CardCareerBinding.inflate(
+        return CareerViewHolder(HomeCardCareerBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false
@@ -55,34 +56,12 @@ class RecentJobAdapter(
     override fun onBindViewHolder(holder: com.intellinex.jobspot.adapters.RecentJobAdapter.CareerViewHolder, position: Int) {
         val job = careers[position] // Get the job from the list
 
-        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
-
-        // Check if created_at is not null
-        if (job.created_at != null) {
-            // Parse the created_at date
-            val createdAt = LocalDateTime.parse(job.created_at, formatter)
-
-            // Get the current date and time
-            val now = LocalDateTime.now()
-
-            // Calculate the difference
-            val seconds = ChronoUnit.SECONDS.between(createdAt, now)
-
-            // Convert seconds to a human-readable format
-            val timeAgo = when {
-                seconds < 60 -> "$seconds seconds ago"
-                seconds < 3600 -> "${seconds / 60} minutes ago"
-                seconds < 86400 -> "${seconds / 3600} hours ago"
-                else -> "${seconds / 86400} days ago"
-            }
 
             holder.binding.apply {
                 textCompanyName.text = job.company_name // Access company_name
                 textPosition.text = job.title // Access title
-                postDate.text = timeAgo // Set the formatted date
                 textAddress.text = job.location_name
                 textSalary.text = job.salary
-                textDescription.text = job.description
                 Glide.with(holder.itemView.context)
                     .load(job.company_profile)
                     .placeholder(R.drawable.logo)
@@ -110,11 +89,8 @@ class RecentJobAdapter(
                     holder.binding.skillList.addView(skillView)
                 }
             }
-
             // handle on item click
             holder.itemView.setOnClickListener {onItemClick(job)}
-        } else {
-            holder.binding.postDate.text = "Date unavailable" // Handle null case
-        }
+
     }
 }

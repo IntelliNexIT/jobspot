@@ -75,11 +75,11 @@
             android:background="@drawable/ic_radius"
             android:contentDescription="Button Notification"
             android:gravity="center"
-            app:backgroundTint="@color/tp1"
+            app:backgroundTint="@android:color/transparent"
             app:icon="@drawable/bell"
             app:iconGravity="textEnd"
             app:iconPadding="0dp"
-            app:iconSize="24dp"
+            app:iconSize="32dp"
             app:iconTint="@color/primary"
             tools:ignore="HardcodedText" />
 
@@ -347,4 +347,5 @@
                     />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,222 +7,229 @@
     android:layout_height="match_parent"
     tools:context=".ui.auth.LoginActivity"
     android:orientation="vertical"
+    android:gravity="center"
     android:background="#F2F2F7">
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:src="@drawable/logo"
-        android:layout_gravity="center"
-        android:layout_marginTop="50dp"
-        />
-
-    <com.google.android.material.textview.MaterialTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Welcome Back!"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/poppins_semibold"
-        android:textSize="20sp"
-        />
-
-    <com.google.android.material.textview.MaterialTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingHorizontal="30dp"
-        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor"
-        android:textAlignment="center"
-        android:fontFamily="@font/poppins_regular"
-        android:textSize="13sp"
-        />
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="60dp"
-        android:paddingHorizontal="18dp">
+        android:orientation="vertical">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/logo"
+            android:layout_gravity="center"
+            />
+
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="E-mail"
-            android:fontFamily="@font/poppins_medium"/>
+            android:text="Welcome Back!"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:textSize="20sp"
+            />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextEmail"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:background="@drawable/ic_radius"
-            android:backgroundTint="@android:color/white"
-            android:paddingHorizontal="13dp"
-            android:textSize="14sp"
-            android:paddingTop="2dp"
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="30dp"
+            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor"
+            android:textAlignment="center"
             android:fontFamily="@font/poppins_regular"
-            android:hint="E-mail address"
-            tools:ignore="SpeakableTextPresentCheck" />
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="20dp"
-        android:paddingHorizontal="18dp">
-
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Password"
-            android:fontFamily="@font/poppins_medium"/>
-
+            android:textSize="13sp"
+            />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical"
+            android:layout_marginTop="60dp"
+            android:paddingHorizontal="18dp">
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="E-mail"
+                android:fontFamily="@font/poppins_medium"/>
+
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextPassword"
+                android:id="@+id/editTextEmail"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:background="@drawable/ic_left_radius"
+                android:background="@drawable/ic_radius"
                 android:backgroundTint="@android:color/white"
-                tools:ignore="SpeakableTextPresentCheck"
-                android:hint="Password"
+                android:paddingHorizontal="13dp"
                 android:textSize="14sp"
                 android:paddingTop="2dp"
                 android:fontFamily="@font/poppins_regular"
-                android:layout_gravity="center_horizontal"
-                android:layout_weight="1"
-                android:inputType="textPassword"
-                android:paddingHorizontal="13dp"/>
+                android:hint="E-mail address"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp"
+            android:paddingHorizontal="18dp">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Password"
+                android:fontFamily="@font/poppins_medium"/>
+
+
             <LinearLayout
-                android:layout_width="1dp"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:backgroundTint="@color/gray"/>
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@drawable/ic_left_radius"
+                    android:backgroundTint="@android:color/white"
+                    tools:ignore="SpeakableTextPresentCheck"
+                    android:hint="Password"
+                    android:textSize="14sp"
+                    android:paddingTop="2dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:inputType="textPassword"
+                    android:paddingHorizontal="13dp"/>
+                <LinearLayout
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:backgroundTint="@color/gray"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/buttonShowHidePassword"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/ic_right_radius"
+                    android:padding="0dp"
+                    app:backgroundTint="@color/white"
+                    app:icon="@drawable/eye_show"
+                    app:iconGravity="textStart"
+                    app:iconPadding="0dp"
+                    app:iconSize="24dp"
+                    app:iconTint="#888888"
+                    tools:ignore="SpeakableTextPresentCheck" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:paddingHorizontal="18dp"
+            android:layout_gravity="center_horizontal">
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/isRememberMe"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/ic_checkbox"
+                android:button="@android:color/transparent"
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Remember me"
+                android:textSize="13sp"
+                android:fontFamily="@font/poppins_regular"/>
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/buttonShowHidePassword"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:background="@drawable/ic_right_radius"
+                android:id="@+id/buttonForgotPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@android:color/transparent"
+                android:textColor="@color/primary"
+                android:text="Forgot Password?"
+                android:textAlignment="textEnd"
                 android:padding="0dp"
-                app:backgroundTint="@color/white"
-                app:icon="@drawable/eye_show"
+                android:fontFamily="@font/poppins_medium"
+                android:textSize="13sp"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="18dp"
+            android:layout_marginTop="20dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonLogin"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/ic_radius"
+                app:backgroundTint="@color/primary"
+                android:text="Sign In"
+                android:textSize="14sp"
+                android:paddingTop="10dp"
+                android:textAllCaps="true"
+                android:fontFamily="@font/poppins_medium"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonSignInWithGoogle"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/ic_radius"
+                app:backgroundTint="@color/tp1"
+                android:layout_marginTop="12dp"
+                android:text="Sign In with Google"
+                android:textAllCaps="true"
+                android:fontFamily="@font/poppins_medium"
+                android:paddingTop="10dp"
+                android:textColor="@color/primary"
+                app:icon="@drawable/ic_google"
+                app:iconTint="@null"
+                app:iconPadding="8dp"
                 app:iconGravity="textStart"
-                app:iconPadding="0dp"
-                app:iconSize="24dp"
-                app:iconTint="#888888"
-                tools:ignore="SpeakableTextPresentCheck" />
+                app:iconSize="20dp"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Don't have account yet? "
+                android:gravity="center"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonTextSignUp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sign Up"
+                app:backgroundTint="@android:color/transparent"
+                android:textAlignment="textStart"
+                android:textColor="@color/aws"
+                android:paddingStart="10dp"
+                android:paddingVertical="0dp"
+                />
         </LinearLayout>
 
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-        android:paddingHorizontal="18dp"
-        android:layout_gravity="center_horizontal">
-
-        <com.google.android.material.checkbox.MaterialCheckBox
-            android:id="@+id/isRememberMe"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_marginEnd="10dp"
-            android:background="@drawable/ic_checkbox"
-            android:button="@android:color/transparent"
-            tools:ignore="TouchTargetSizeCheck" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Remember me"
-            android:textSize="13sp"
-            android:fontFamily="@font/poppins_regular"/>
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/buttonForgotPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@android:color/transparent"
-            android:textColor="@color/primary"
-            android:text="Forgot Password?"
-            android:textAlignment="textEnd"
-            android:padding="0dp"
-            android:fontFamily="@font/poppins_medium"
-            android:textSize="13sp"
-            />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingHorizontal="18dp"
-        android:layout_marginTop="20dp">
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/buttonLogin"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:background="@drawable/ic_radius"
-            app:backgroundTint="@color/primary"
-            android:text="Sign In"
-            android:textSize="14sp"
-            android:paddingTop="10dp"
-            android:textAllCaps="true"
-            android:fontFamily="@font/poppins_medium"/>
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/buttonSignInWithGoogle"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:background="@drawable/ic_radius"
-            app:backgroundTint="@color/tp1"
-            android:layout_marginTop="12dp"
-            android:text="Sign In with Google"
-            android:textAllCaps="true"
-            android:fontFamily="@font/poppins_medium"
-            android:paddingTop="10dp"
-            android:textColor="@color/primary"
-            app:icon="@drawable/ic_google"
-            app:iconTint="@null"
-            app:iconPadding="8dp"
-            app:iconGravity="textStart"
-            app:iconSize="20dp"
-            />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:orientation="horizontal"
-        android:gravity="center">
-
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Don't have account yet? "
-            android:gravity="center"/>
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/buttonTextSignUp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Sign Up"
-            app:backgroundTint="@android:color/transparent"
-            android:textAlignment="textStart"
-            android:textColor="@color/aws"
-            android:paddingStart="10dp"
-            android:paddingVertical="0dp"
-            />
-    </LinearLayout>
-
 
 </LinearLayout>

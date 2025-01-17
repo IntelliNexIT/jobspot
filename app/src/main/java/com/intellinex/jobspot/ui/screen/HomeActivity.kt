@@ -2,35 +2,40 @@ package com.intellinex.jobspot.ui.screen
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.drawable.Drawable
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.view.ViewGroup
 import android.widget.FrameLayout
-import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.button.MaterialButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.intellinex.jobspot.R
 import com.intellinex.jobspot.api.instances.AuthClient
 import com.intellinex.jobspot.api.resource.UserResponse
 import com.intellinex.jobspot.api.services.AuthService
+import com.intellinex.jobspot.ui.auth.LoginActivity
 import com.intellinex.jobspot.ui.fragment.AccountFragment
-import com.intellinex.jobspot.ui.fragment.BookmarkFragment
 import com.intellinex.jobspot.ui.fragment.bottom.BottomSheetFragment
 import com.intellinex.jobspot.ui.fragment.CareerFragment
 import com.intellinex.jobspot.ui.fragment.FeedFragment
 import com.intellinex.jobspot.ui.fragment.HomeFragment
+import com.intellinex.jobspot.ui.screen.account.UnauthFragment
 import com.intellinex.jobspot.utils.Authentication
+import com.intellinex.jobspot.utils.InformationDialog
 import com.intellinex.jobspot.utils.NetworkConnection
+import com.intellinex.jobspot.utils.ToastMessage
 import com.intellinex.jobspot.utils.UserManager
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.Locale
 
 class HomeActivity : AppCompatActivity() {
 
@@ -44,7 +49,15 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
+
+
         sharedPreferences = getSharedPreferences("MY_PREFS", Context.MODE_PRIVATE)
+
+        loadPreferenceLanguage()
+
+        if(savedInstanceState == null){
+            replaceFragment(HomeFragment(),"HomeFragment")
+        }
 
         // Check Network Connection
         val networkConnection = NetworkConnection(applicationContext)
@@ -52,39 +65,54 @@ class HomeActivity : AppCompatActivity() {
             if(it) {
                 showMainContent()
                 fetchUserData(Authentication(sharedPreferences).isAuthenticated())
-
-                if(savedInstanceState == null){
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.fragment_container, HomeFragment())
-                        .commit()
-                }
-
             }else{
                 showNoConnectionLayout()
             }
         }
 
+
         val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottom_navigation)
         fab = findViewById(R.id.buttonAdd)
 
+
+
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
-            val selectedFragment: Fragment = when(item.itemId) {
+            val selectedFragment: Fragment = when (item.itemId) {
                 R.id.nav_feed -> FeedFragment()
                 R.id.nav_career -> CareerFragment()
-                R.id.nav_bookmark -> BookmarkFragment()
-                R.id.nav_account -> AccountFragment()
+                R.id.nav_account -> {
+                    if(Authentication(sharedPreferences).isAuthenticated()) {
+                        AccountFragment()
+                    }else {
+                        UnauthFragment()
+                    }
+                }
                 else -> HomeFragment()
             }
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, selectedFragment)
-                .commit()
+
+            replaceFragment(selectedFragment, selectedFragment::class.java.simpleName)
             true
         }
 
+//        val toastMessage = ToastMessage(this, "This is my testing toast.")
+//        toastMessage.startToast()
+//        toastMessage.setToastIcon(ContextCompat.getDrawable(this, R.drawable.success)!!)
+
 
         fab.setOnClickListener {
-            val bottomSheet = BottomSheetFragment()
-            bottomSheet.show(supportFragmentManager, bottomSheet.tag)
+            if(Authentication(sharedPreferences).isAuthenticated()) {
+                val bottomSheet = BottomSheetFragment()
+                bottomSheet.show(supportFragmentManager, bottomSheet.tag)
+            }else {
+                val informationDialog = InformationDialog(this, "Unauthenticated", "You have not authenticated yet. Please log in to continue.")
+                informationDialog.startInformationDialog()
+                informationDialog.setPositiveButton {
+                    val intent = Intent(this, LoginActivity::class.java)
+                    startActivity(intent)
+                }
+                val warningIcon: Drawable = ContextCompat.getDrawable(this, R.drawable.warning)!!
+                informationDialog.setAlertIcon(warningIcon)
+            }
         }
 
         // Authenticate
@@ -94,6 +122,27 @@ class HomeActivity : AppCompatActivity() {
 //            Toast.makeText(this, "You're not authenticated", Toast.LENGTH_LONG).show()
 //        }
 
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        // Save the current fragment's tag
+        val currentFragment = supportFragmentManager.findFragmentById(R.id.fragment_container)
+        if (currentFragment != null) {
+            outState.putString("currentFragment", currentFragment::class.java.simpleName)
+        }
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        // Restore the previous fragment on activity recreation
+        val fragmentTag = savedInstanceState.getString("currentFragment")
+        if (fragmentTag != null) {
+            val fragment = supportFragmentManager.findFragmentByTag(fragmentTag)
+            if (fragment != null) {
+                replaceFragment(fragment, fragmentTag)
+            }
+        }
     }
 
     private fun fetchUserData(isAuthenticated: Boolean){
@@ -148,6 +197,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun showMainContent() {
+
         // If the no connection layout exists, hide it
         if (::noConnectionLayout.isInitialized) {
             noConnectionLayout.visibility = View.GONE
@@ -155,5 +205,50 @@ class HomeActivity : AppCompatActivity() {
         findViewById<View>(R.id.fragment_container).visibility = View.VISIBLE
         findViewById<View>(R.id.bottom_navigation).visibility = View.VISIBLE
         findViewById<FloatingActionButton>(R.id.buttonAdd).visibility = View.VISIBLE
+    }
+
+    private fun loadPreferenceLanguage() {
+        val ln = sharedPreferences.getString("ln", "en")
+        setLocale(ln.toString())
+    }
+
+    private fun setLocale(localeCode: String) {
+        val newLocale = Locale(localeCode)
+        Locale.setDefault(newLocale)
+
+        val config = resources.configuration.apply {
+            setLocale(newLocale)
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            resources.updateConfiguration(config, resources.displayMetrics)
+        } else {
+            resources.updateConfiguration(config, resources.displayMetrics)
+        }
+    }
+
+    private fun replaceFragment(fragment: Fragment, tag: String) {
+
+        // Check if the fragment already exists
+        val existingFragment = supportFragmentManager.findFragmentByTag(tag)
+
+        // Begin a fragment transaction
+        val transaction = supportFragmentManager.beginTransaction()
+
+        // Hide all other fragments
+        for (frag in supportFragmentManager.fragments) {
+            if (frag != null) {
+                transaction.remove(frag)
+            }
+        }
+
+        // If the fragment does not exist, add it
+        if (existingFragment == null) {
+            transaction.add(R.id.fragment_container, fragment, tag)
+        } else {
+            transaction.show(existingFragment)
+        }
+
+        transaction.commit()
     }
 }

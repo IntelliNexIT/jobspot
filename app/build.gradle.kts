@@ -79,6 +79,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.1")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7")
+    //noinspection UseTomlInstead
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.7")
 
     // ImageView URL
@@ -89,4 +90,7 @@ dependencies {
 
     // AppWrite
     implementation("io.appwrite:sdk-for-android:6.1.0")
+
+    // Lottie
+    implementation("com.airbnb.android:lottie:3.4.0")
 }

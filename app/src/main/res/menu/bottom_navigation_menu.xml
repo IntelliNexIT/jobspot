@@ -1,23 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/nav_home"
         android:icon="@drawable/home"
-        android:title="Home" />
+        android:title="@string/home" />
 
     <item android:id="@+id/nav_feed"
         android:icon="@drawable/feed"
-        android:title="Feed"
+        android:title="@string/feed"
         />
+
+    <item android:id="@+id/nav_blank"
+        android:title="@string/space"
+        app:showAsAction="never"
+        android:checkable="false"
+        android:enabled="false"/>
+
     <item
         android:id="@+id/nav_career"
         android:icon="@drawable/career"
-        android:title="Career" />
-    <item
-        android:id="@+id/nav_bookmark"
-        android:icon="@drawable/bookmark"
-        android:title="Bookmark" />
-    <item android:title="Account"
+        android:title="@string/career" />
+
+<!--    <item-->
+<!--        android:id="@+id/nav_bookmark"-->
+<!--        android:icon="@drawable/bookmark"-->
+<!--        android:title="Bookmark" />-->
+    <item android:title="@string/account"
         android:id="@+id/nav_account"
         android:icon="@drawable/account" />
 </menu>

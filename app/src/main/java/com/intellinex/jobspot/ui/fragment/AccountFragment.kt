@@ -6,14 +6,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.cardview.widget.CardView
 import com.google.android.material.button.MaterialButton
 import com.intellinex.jobspot.R
 import com.intellinex.jobspot.ui.screen.account.EditProfileActivity
+import com.intellinex.jobspot.ui.screen.account.LanguageActivity
 import com.intellinex.jobspot.utils.LoadingDialog
 
 
 class AccountFragment : Fragment() {
 
+    private lateinit var cardViewLanguage: CardView
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -26,9 +29,15 @@ class AccountFragment : Fragment() {
 
         val editProfileButton = view.findViewById<MaterialButton>(R.id.buttonEditProfile)
         val buttonLogout = view.findViewById<MaterialButton>(R.id.buttonLogout)
+        cardViewLanguage = view.findViewById(R.id.cardViewLanguage)
 
         editProfileButton.setOnClickListener {
             val intent = Intent(this.context, EditProfileActivity::class.java)
+            startActivity(intent)
+        }
+
+        cardViewLanguage.setOnClickListener {
+            val intent = Intent(context, LanguageActivity::class.java)
             startActivity(intent)
         }
 
