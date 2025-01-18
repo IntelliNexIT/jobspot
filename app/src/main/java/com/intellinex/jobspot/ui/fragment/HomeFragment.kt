@@ -134,11 +134,11 @@ class HomeFragment : Fragment() {
                         .into(avatarImage)
                 }
                 nickname.text = user.nickname
-                Log.d("HomeFragment", "User information loaded: ${user.nickname}")
+                Log.d("HOME-FRAGMENT", "User information loaded: ${user.nickname}")
 
         } else {
             // Optionally handle the case where user information is not available
-            Log.d("HomeFragment", "User information is not available.")
+            Log.e("HOME-FRAGMENT", "User information is not available.")
         }
     }
 

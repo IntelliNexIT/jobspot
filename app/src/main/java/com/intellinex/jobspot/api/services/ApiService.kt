@@ -9,15 +9,15 @@ import retrofit2.http.POST
 import retrofit2.http.Query
 
 interface ApiService {
-    @POST("career/read")
+    @POST("career/index")
     fun getCareers() :Call<ApiResponse>
 
-    @POST("industry/read")
+    @POST("industry/index")
     fun getIndustries(): Call<IndustryResponse>
 
-    @POST("employment_type/read")
+    @POST("employment_type/index")
     fun getJobTypes(): Call<JobTypeResponse>
 
-    @POST("feeds/read")
+    @POST("feeds/index")
     fun getFeeds(@Query("page") page: Int?): Call<FeedResponse>
 }

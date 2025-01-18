@@ -1,9 +1,11 @@
 package com.intellinex.jobspot.ui.screen
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.content.pm.PackageManager
 import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
@@ -11,11 +13,16 @@ import android.util.Log
 import android.view.View
 import android.widget.FrameLayout
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.firebase.Firebase
+import com.google.firebase.messaging.FirebaseMessaging
+import com.google.firebase.messaging.messaging
 import com.intellinex.jobspot.R
 import com.intellinex.jobspot.api.instances.AuthClient
 import com.intellinex.jobspot.api.resource.UserResponse
@@ -30,7 +37,6 @@ import com.intellinex.jobspot.ui.screen.account.UnauthFragment
 import com.intellinex.jobspot.utils.Authentication
 import com.intellinex.jobspot.utils.InformationDialog
 import com.intellinex.jobspot.utils.NetworkConnection
-import com.intellinex.jobspot.utils.ToastMessage
 import com.intellinex.jobspot.utils.UserManager
 import retrofit2.Call
 import retrofit2.Callback
@@ -38,6 +44,12 @@ import retrofit2.Response
 import java.util.Locale
 
 class HomeActivity : AppCompatActivity() {
+
+    companion object {
+        private const val TAG = "HOME-ACTIVITY"
+        private const val NOTIFICATION_REQUEST_CODE = 1234
+    }
+
 
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var fab: FloatingActionButton
@@ -49,11 +61,20 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-
+        intent.extras?.let {
+            for (key in it.keySet()) {
+                val value = intent.extras?.get(key)
+                Log.d(TAG, "Key: $key Value: $value")
+            }
+        }
 
         sharedPreferences = getSharedPreferences("MY_PREFS", Context.MODE_PRIVATE)
 
         loadPreferenceLanguage()
+
+        requestNotificationPermission()
+
+        runtimeEnableAutoInit()
 
         if(savedInstanceState == null){
             replaceFragment(HomeFragment(),"HomeFragment")
@@ -148,9 +169,10 @@ class HomeActivity : AppCompatActivity() {
     private fun fetchUserData(isAuthenticated: Boolean){
         val apiUrl = this.getString(R.string.api_url)
         if(isAuthenticated){
-            val token = sharedPreferences.getString("JWT_TOKEN", null).toString()
 
-            val authService = AuthClient.getAuthClient(apiUrl, token)
+//            val token = sharedPreferences.getString("JWT_TOKEN", null).toString()
+
+            val authService = AuthClient.getAuthClient(this, apiUrl)
                 .create(AuthService::class.java)
 
             val call: Call<UserResponse> = authService.user()
@@ -241,7 +263,6 @@ class HomeActivity : AppCompatActivity() {
                 transaction.remove(frag)
             }
         }
-
         // If the fragment does not exist, add it
         if (existingFragment == null) {
             transaction.add(R.id.fragment_container, fragment, tag)
@@ -251,4 +272,59 @@ class HomeActivity : AppCompatActivity() {
 
         transaction.commit()
     }
+
+    //    Notification configuration
+
+    private val requestPermissionLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { isGranted: Boolean ->
+        if(isGranted) {
+            Toast.makeText(this, "Permission is granted", Toast.LENGTH_LONG).show()
+        }else {
+            // TODO: Inform user that that your app will not show notifications.
+        }
+    }
+
+
+
+
+    fun runtimeEnableAutoInit() {
+        // [START fcm_runtime_enable_auto_init]
+        Firebase.messaging.isAutoInitEnabled = true
+        // [END fcm_runtime_enable_auto_init]
+    }
+
+    private fun requestNotificationPermission() {
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if(ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED) {
+                // FCM SDK (and your app) can post notifications.
+            }else if (shouldShowRequestPermissionRationale(Manifest.permission.POST_NOTIFICATIONS)) {
+                // TODO: display an educational UI explaining to the user the features that will be enabled
+                //       by them granting the POST_NOTIFICATION permission. This UI should provide the user
+                //       "OK" and "No thanks" buttons. If the user selects "OK," directly request the permission.
+                //       If the user selects "No thanks," allow the user to continue without notifications.
+            }else {
+                requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+            }
+        }else{
+            getDeviceToken()
+        }
+    }
+
+    private fun getDeviceToken() {
+        FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
+            if (!task.isSuccessful) {
+                Log.w(TAG, "Fetching FCM registration token failed", task.exception)
+                return@OnCompleteListener
+            }
+
+            // Get new FCM registration token
+            val token = task.result
+
+            // Log and
+            Log.d(TAG, token)
+            Toast.makeText(baseContext, token, Toast.LENGTH_SHORT).show()
+        })
+    }
+
 }

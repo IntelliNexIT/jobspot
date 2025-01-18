@@ -11,10 +11,20 @@ data class SignInRequest(
     val password: String
 )
 
+data class LogoutResponse(
+    val code: Int,
+    val status: String,
+    val msg: String,
+    val data: Any
+)
+
 interface AuthService {
     @POST("auth/signin")
     fun signin(@Body request: SignInRequest): Call<SignInResponse>
 
     @POST("me")
     fun user(): Call<UserResponse>
+
+    @POST("logout")
+    suspend fun logout(): LogoutResponse
 }

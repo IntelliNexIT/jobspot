@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -33,8 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/career"
-            android:textSize="24sp"
-            android:fontFamily="@font/poppins_pold"
+            style="@style/headerTextSize"
             />
 
     </LinearLayout>
@@ -59,11 +59,59 @@
         android:paddingHorizontal="18dp"
         >
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="60dp"
+            android:layout_marginBottom="12dp"
+            android:layout_gravity="center_vertical">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonAll"
+                android:layout_width="50dp"
+                android:layout_height="48dp"
+                android:padding="0dp"
+                android:backgroundTint="@color/tp1"
+                android:text="All"
+                android:layout_marginEnd="12dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonFilterByIndustry"
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:background="@drawable/ic_outline"
+                android:text="Industry"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="14sp"
+                app:backgroundTint="#DDDDDD"
+                app:icon="@drawable/ic_down"
+                app:iconGravity="end"
+                app:iconPadding="0dp"
+                app:iconTint="@android:color/darker_gray"
+                tools:ignore="TouchTargetSizeCheck"
+                android:layout_marginEnd="12dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonFilterByLocation"
+                android:layout_width="130dp"
+                android:layout_height="40dp"
+                android:background="@drawable/ic_outline"
+                android:text="Location"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="14sp"
+                app:backgroundTint="#DDDDDD"
+                app:icon="@drawable/ic_down"
+                app:iconGravity="end"
+                app:iconPadding="0dp"
+                app:iconTint="@android:color/darker_gray"
+                tools:ignore="TouchTargetSizeCheck" />
+        </LinearLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerCareer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="60dp"
         android:orientation="vertical"
 
         />

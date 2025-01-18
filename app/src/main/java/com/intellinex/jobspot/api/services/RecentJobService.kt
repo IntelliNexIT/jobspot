@@ -6,7 +6,7 @@ import retrofit2.http.POST
 
 interface RecentJobService {
 
-    @POST("career/read")
+    @POST("career/index")
     fun getRecentJob(): Call<RecentJobResponse>
 
 }

@@ -5,6 +5,6 @@ import retrofit2.Call
 import retrofit2.http.POST
 
 interface HotService {
-    @POST("hot/read")
+    @POST("hot/index")
     fun getHots(): Call<HotResponse>
 }

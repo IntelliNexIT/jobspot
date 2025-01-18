@@ -63,8 +63,8 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
-    <string name="api_url">http://172.10.0.247:8001/api/</string>
-<!--    <string name="api_url">http://192.168.1.4:8001/api/</string>-->
+<!--    <string name="api_url">http://172.10.0.247:8001/api/</string>-->
+    <string name="api_url">http://192.168.1.4:8001/api/</string>
     <string name="english">អង់គ្លេស</string>
     <string name="khmer">ខ្មែរ</string>
     <string name="chinese">ចិន</string>
@@ -74,4 +74,15 @@
     <string name="feed">Feed</string>
     <string name="account">Account</string>
     <string name="space" />
+    <string name="application">Application</string>
+    <string name="my_profile">My Profile</string>
+    <string name="my_company">My Company</string>
+    <string name="resume">Resume</string>
+    <string name="help_center">Help Center</string>
+    <string name="about_app">About App</string>
+    <string name="logout">Logout</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="more">More</string>
+    <string name="upload">Upload</string>
+    <string name="create_new">Create New</string>
 </resources>

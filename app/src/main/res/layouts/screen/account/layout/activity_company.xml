@@ -1,10 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/mainCompany"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.screen.account.CompanyActivity">
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.screen.account.CompanyActivity"
+    android:backgroundTint="@color/bg">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="18dp"
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonBack"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:padding="0dp"
+                app:backgroundTint="@android:color/transparent"
+                app:icon="@drawable/ic_back"
+                app:iconGravity="start"
+                app:iconPadding="0dp"
+                app:iconSize="22dp"
+                app:iconTint="@android:color/darker_gray"
+                tools:ignore="SpeakableTextPresentCheck"
+                android:layout_alignParentStart="true"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonUploadResume"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/create_new"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                app:backgroundTint="@android:color/transparent"
+                android:textColor="@color/primary"
+                android:textAlignment="textEnd"
+                android:padding="0dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:textSize="16sp"
+                />
+
+        </RelativeLayout>
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/my_company"
+            android:fontFamily="@font/poppins_semibold"
+            android:textSize="22sp" />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/resumeRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_marginHorizontal="18dp"/>
+
+
+    <LinearLayout
+        android:id="@+id/resumeNotFoundLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_not_found"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semibold"
+            android:textSize="18sp"
+            android:layout_marginTop="12dp"
+            android:text="No Company Found!"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="Create your company, announce jobs, \n post your feed."
+            android:fontFamily="@font/poppins_regular"
+            android:textColor="@android:color/darker_gray"/>
+    </LinearLayout>
+
+
+</LinearLayout>
