@@ -1,10 +1,12 @@
-package com.intellinex.jobspot.adapters
+package com.intellinex.jobspot.adapters.contents
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import com.intellinex.jobspot.R
 import com.intellinex.jobspot.api.resource.FeedDataX
@@ -18,7 +20,9 @@ class FeedAdapter(
     private val onFeedClick: (id: Int) -> Unit
 ): RecyclerView.Adapter<FeedAdapter.FeedViewHolder>() {
 
-    inner class FeedViewHolder(val binding: CardFeedBinding): RecyclerView.ViewHolder(binding.root)
+    inner class FeedViewHolder(val binding: CardFeedBinding): RecyclerView.ViewHolder(binding.root) {
+        val viewPager: ViewPager2 = binding.feedImages
+    }
 
     private val diffCallback = object : DiffUtil.ItemCallback<FeedDataX>() {
         override fun areItemsTheSame(oldItem: FeedDataX, newItem: FeedDataX): Boolean {
@@ -47,6 +51,7 @@ class FeedAdapter(
     }
 
     override fun onBindViewHolder(holder: FeedViewHolder, position: Int) {
+
         val feed = feeds[position]
 
         holder.binding.apply {
@@ -59,8 +64,20 @@ class FeedAdapter(
                 .into(companyProfile)
             feedDescription.text = feed.description
             reactionCount.text = when {
-                feed.reaction_count != null -> feed.reaction_count.toString()
+                feed.reaction_count != null -> {
+                    feed.reaction_count.toString()
+                }
                 else -> "0"
+            }
+
+            if(feed.assets!!.isNotEmpty()) {
+                layoutFeedImages.visibility = View.VISIBLE
+                val adapter = ImageFeedViewPagerAdapter(feed.assets)
+                feedImages.adapter = adapter
+
+                feedImages.offscreenPageLimit = 1
+            }else {
+                layoutFeedImages.visibility = View.GONE
             }
         }
 

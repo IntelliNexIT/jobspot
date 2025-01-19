@@ -25,6 +25,10 @@
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">24dp</item>
     </style>
+    <style name="Circular100" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">14dp</item>
+    </style>
 
     <style name="TabText" parent="TextAppearance.Design.Tab">
         <item name="android:textSize">16sp</item>
