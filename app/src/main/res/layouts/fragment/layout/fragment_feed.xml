@@ -31,7 +31,8 @@
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/connectionHeader">
+        app:layout_constraintTop_toBottomOf="@id/connectionHeader"
+        android:paddingBottom="100dp">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/feedRecyclerView"

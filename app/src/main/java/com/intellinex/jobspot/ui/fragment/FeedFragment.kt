@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.intellinex.jobspot.adapters.FeedAdapter
+import com.intellinex.jobspot.adapters.contents.FeedAdapter
 import com.intellinex.jobspot.api.instances.RetrofitClient
 import com.intellinex.jobspot.api.resource.FeedResponse
 import com.intellinex.jobspot.databinding.FragmentFeedBinding

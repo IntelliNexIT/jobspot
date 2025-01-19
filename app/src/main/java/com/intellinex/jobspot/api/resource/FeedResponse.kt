@@ -29,7 +29,7 @@ data class FeedDataX(
     val company_logo: String,
     val company_name: String,
     val comment_count: Any?,
-    val assets: Any?,
+    val assets: List<String>?,
     val created_at: String,
     val id: Int,
     val reaction_count: Any?,

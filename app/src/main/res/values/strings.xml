@@ -54,10 +54,9 @@
     <string name="guest">Guest</string>
     <string name="search_here">Search here...</string>
     <string name="month">/month</string>
-<!--    <string name="api_url">http://172.10.0.247:8001/api/</string>-->
-<!--    <string name="api_url">http://10.11.5.206:8001/api/</string>-->
-<!--                <string name="api_url">http://192.168.1.5:8001/api/</string>-->
-    <string name="api_url">http://192.168.0.101:8001/api/</string>
+    <!--    <string name="api_url">http://172.10.0.247:8001/api/</string>-->
+    <!--    <string name="api_url">http://10.11.5.206:8001/api/</string>-->
+                    <string name="api_url">http://192.168.1.4:8001/api/</string>
     <string name="recent_jobs">Recent Jobs</string>
     <string name="see_all">See all</string>
     <string name="find_your_job">Find Your Job</string>
@@ -88,4 +87,5 @@
     <string name="more">More</string>
     <string name="upload">Upload</string>
     <string name="create_new">Create New</string>
+    <string name="confirm_password">Confirm Password</string>
 </resources>
