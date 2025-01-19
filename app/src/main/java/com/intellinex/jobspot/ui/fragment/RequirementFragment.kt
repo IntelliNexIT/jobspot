@@ -9,30 +9,38 @@ import android.view.ViewGroup
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.TextView
+import androidx.fragment.app.activityViewModels
 import com.intellinex.jobspot.R
+import com.intellinex.jobspot.databinding.FragmentRequirementBinding
+import com.intellinex.jobspot.models.contents.CareerViewModel
 
 class RequirementFragment : Fragment() {
+
+    private var _binding: FragmentRequirementBinding? = null
+    private val binding get() = _binding!!
+    private val careerViewModel: CareerViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_requirement, container, false)
+    ): View {
+        _binding = FragmentRequirementBinding.inflate(
+            inflater,
+            container,
+            false
+        )
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val textRequirement = view.findViewById<TextView>(R.id.textRequirement)
-        val textFacilities = view.findViewById<TextView>(R.id.textFacilities)
-
-        val html = "<ul>" +
-                "<li> Experience 3+ years in graphic design.</li>" +
-                "<li> Experience in Figma at least 5+ years." +
-                "</ul>"
-
-        textRequirement.text = Html.fromHtml(html, Html.FROM_HTML_MODE_LEGACY)
+        careerViewModel.careerData.observe(viewLifecycleOwner) {data ->
+            binding.textRequirement.text = Html.fromHtml(
+                data.data.requirement?.trimIndent(),
+                Html.FROM_HTML_OPTION_USE_CSS_COLORS
+            )
+        }
 
     }
 

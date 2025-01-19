@@ -76,6 +76,8 @@ class HomeActivity : AppCompatActivity() {
 
         runtimeEnableAutoInit()
 
+        logRegToken()
+
         if(savedInstanceState == null){
             replaceFragment(HomeFragment(),"HomeFragment")
         }
@@ -220,7 +222,6 @@ class HomeActivity : AppCompatActivity() {
 
     private fun showMainContent() {
 
-        // If the no connection layout exists, hide it
         if (::noConnectionLayout.isInitialized) {
             noConnectionLayout.visibility = View.GONE
         }
@@ -279,16 +280,32 @@ class HomeActivity : AppCompatActivity() {
         ActivityResultContracts.RequestPermission()
     ) { isGranted: Boolean ->
         if(isGranted) {
+            getDeviceToken()
             Toast.makeText(this, "Permission is granted", Toast.LENGTH_LONG).show()
         }else {
-            // TODO: Inform user that that your app will not show notifications.
+            Toast.makeText(this, "Notification permission is denied", Toast.LENGTH_LONG).show()
         }
     }
 
+    private fun logRegToken() {
+        // [START log_reg_token]
+        Firebase.messaging.getToken().addOnCompleteListener { task ->
+            if (!task.isSuccessful) {
+                Log.w(TAG, "Fetching FCM registration token failed", task.exception)
+                return@addOnCompleteListener
+            }
 
+            // Get new FCM registration token
+            val token = task.result
 
+            // Log and toast
+            val msg = "FCM Registration token: $token"
+            Log.d(TAG, msg)
+        }
+        // [END log_reg_token]
+    }
 
-    fun runtimeEnableAutoInit() {
+    private fun runtimeEnableAutoInit() {
         // [START fcm_runtime_enable_auto_init]
         Firebase.messaging.isAutoInitEnabled = true
         // [END fcm_runtime_enable_auto_init]
@@ -323,7 +340,6 @@ class HomeActivity : AppCompatActivity() {
 
             // Log and
             Log.d(TAG, token)
-            Toast.makeText(baseContext, token, Toast.LENGTH_SHORT).show()
         })
     }
 

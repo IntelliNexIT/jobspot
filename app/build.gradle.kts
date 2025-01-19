@@ -1,7 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.google.gms.google.services)
+    id("com.google.gms.google-services")
+    id("kotlin-parcelize")
 }
 
 allprojects {
@@ -97,4 +98,5 @@ dependencies {
     implementation("com.airbnb.android:lottie:3.4.0")
 
     implementation(platform("com.google.firebase:firebase-bom:33.8.0"))
+    implementation("com.google.firebase:firebase-messaging")
 }

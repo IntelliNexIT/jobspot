@@ -44,7 +44,7 @@ class CareerFragment : Fragment() {
         careerAdapter = CareerAdapter { career ->
             // Handle on click item
             val intent = Intent(context, CareerDetailActivity::class.java)
-            intent.putExtra("career_id", career.id)
+            intent.putExtra("career_id", career.id.toString())
             startActivity(intent)
         }
         binding.recyclerCareer.apply { // Use the binding variable

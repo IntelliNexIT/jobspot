@@ -6,12 +6,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:contentDescription="About ScrollView"
+    android:scrollbars="none"
     tools:ignore="HardcodedText">
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingBottom="70dp">
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
@@ -27,6 +29,7 @@
             android:layout_marginTop="4dp"
             android:layout_marginStart="18dp"
             android:textSize="13sp"
+            android:scrollbars="none"
             android:fontFamily="@font/poppins_regular"/>
 
 
